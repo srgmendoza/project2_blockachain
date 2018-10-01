@@ -1,6 +1,6 @@
-# Blockchain Data
+# RESTFul Web API With ExpresJS Framework
 
-Blockchain has the potential to change the way that the world approaches data. Develop Blockchain skills by understanding the data model behind Blockchain by developing your own simplified private blockchain.
+3rd Project of Udacity Blockchain Nanodegree
 
 ## Getting Started
 
@@ -24,40 +24,40 @@ npm install crypto-js --save
 ```
 npm install level --save
 ```
+- Install Express JS Framework
+```
+npm install express --save
+```
+- Install Express JS Framework Parser
+```
+npm install body-parser
+```
 
 ## Testing
 
-To test code:
-1: Open a command prompt or shell terminal after install node.js.
-2: Enter a node session, also known as REPL (Read-Evaluate-Print-Loop).
+To test:
+
+This project have 2 endpoints listening in port 8000
+
+Method: GET
+localhost:8000/block/[blockHeight]
+Retrieves the information for the given block height.
+
+Method POST
+localhost:8000/block/
+Stores a new block into the blockchain, and retrieves the new block with its info in JSON format
+
+The request body should be string formatted and must look like this
+
 ```
-node
-```
-3: Copy and paste your code into your node session
-4: Instantiate blockchain with blockchain variable
-```
-let blockchain = new Blockchain();
-```
-5: Generate 10 blocks using a for loop
-```
-for (var i = 0; i <= 10; i++) {
-  blockchain.addBlock(new Block("test data "+i));
+POST /block HTTP/1.1
+Host: localhost:8000
+Cache-Control: no-cache
+
+{
+  "body": "Testing block with test string data"
 }
 ```
-6: Validate blockchain
-```
-blockchain.validateChain();
-```
-7: Induce errors by changing block data
-```
-let inducedErrorBlocks = [2,4,7];
-for (var i = 0; i < inducedErrorBlocks.length; i++) {
-  blockchain.chain[inducedErrorBlocks[i]].data='induced chain error';
-}
-```
-8: Validate blockchain. The chain should now fail with blocks 2,4, and 7.
-```
-blockchain.validateChain();
-```
-`# project2_blockachain
-# project2_blockachain
+
+`# project3_blockachain
+# project3_blockachain
