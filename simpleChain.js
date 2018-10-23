@@ -187,7 +187,7 @@ class Blockchain{
         })
     }
 
-    // get blocks by address
+    // get blocks by hash
     async getBlockByHash(hash){
         return new Promise (function (resolve,reject){
             let filteredBlocks = [];
