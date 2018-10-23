@@ -8,28 +8,28 @@ const db = level(chainDB);
 
 // Add data to levelDB with key/value pair
 function addLevelDBData(key,value){
-  db.put(key, value, function(err) {
-    if (err) return console.log('Block ' + key + ' submission failed', err);
-  })
+    db.put(key, value, function(err) {
+        if (err) return console.log('Block ' + key + ' submission failed', err);
+    })
 }
 
 // Get data from levelDB with key
 function getLevelDBData(key){
-  // db.get(key, function(err, value) {
-  //   if (err) return console.log('Not found key!' + key, err);
-  //   console.log('Value = ' + value);
-  // })
+    // db.get(key, function(err, value) {
+    //   if (err) return console.log('Not found key!' + key, err);
+    //   console.log('Value = ' + value);
+    // })
 
-  return new Promise (function(resolve,reject){
-    db.get(key, function (err, value){
-      if (err){
-        return console.log('Not found key! ' + key, err);
-      }
-      reject(err);
-      resolve(JSON.stringify(value));
-      console.log('Value = ' + JSON.stringify(value));
+    return new Promise (function(resolve,reject){
+        db.get(key, function (err, value){
+            if (err){
+                return console.log('Not found key! ' + key, err);
+            }
+            reject(err);
+            resolve(JSON.stringify(value));
+            console.log('Value = ' + JSON.stringify(value));
+        })
     })
-  })
 }
 
 // Add data to levelDB with value
@@ -39,12 +39,12 @@ function addDataToLevelDB(value) {
         .on('data', function(data) {
             i++;
         }).on('error', function(err) {
-            return console.log('Unable to read data stream!', err)
-        }).on('close', function() {
-          console.log('Block #' + i);
-          addLevelDBData(i, value);
-          getLevelDBData(i);
-        });
+        return console.log('Unable to read data stream!', err)
+    }).on('close', function() {
+        console.log('Block #' + i);
+        addLevelDBData(i, value);
+        getLevelDBData(i);
+    });
 }
 
 /* ===== Testing ==============================================================|
@@ -60,8 +60,8 @@ function addDataToLevelDB(value) {
 
 
 (function theLoop (i) {
-  setTimeout(function () {
-    addDataToLevelDB('Testing data' + i);
-    if (--i) theLoop(i);
-  }, 100);
+    setTimeout(function () {
+        addDataToLevelDB('Testing data' + i);
+        if (--i) theLoop(i);
+    }, 100);
 })(10);
