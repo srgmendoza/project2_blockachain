@@ -2,7 +2,7 @@
 |  Class with a constructor for initial Response      |
 |  ==================================================*/
 
-class MessageResp{
+class RegistryResp{
     constructor(address){
         this.address = address,
             this.requestTimeStamp = '',
@@ -11,4 +11,4 @@ class MessageResp{
     }
 }
 
-module.exports = MessageResp;
+module.exports = RegistryResp;
